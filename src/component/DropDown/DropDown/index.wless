@@ -1,0 +1,44 @@
+.drop-down {
+  //box-sizing: border-box;
+  display: inline-block;
+  /*  width: 60px;
+    height: 20px;*/
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+
+  .chooseValue {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .drop-content {
+    position: absolute;
+    background-color: gold;
+  }
+
+  .top-left {
+    bottom: 100%;
+    left: 0;
+    margin-bottom: 5px;
+  }
+
+  .top-right {
+    bottom: 100%;
+    right: 0;
+    margin-bottom: 5px;
+  }
+
+  .bottom-right {
+    top: 100%;
+    right: 0;
+    margin-top: 5px;
+  }
+
+  .bottom-left {
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+  }
+}
+

@@ -1,0 +1,17 @@
+.breadCrumb {
+  .bread {
+    margin: 0 4px;
+  }
+}
+
+.breadCrum:first-child {
+  margin-left: 0;
+}
+
+.breadCrum:last-child {
+  margin-right: 0;
+}
+
+.bread:hover {
+  color: #cccccc;
+}

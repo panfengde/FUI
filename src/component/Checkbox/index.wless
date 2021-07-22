@@ -1,0 +1,32 @@
+.checkbox {
+  display: inline-block;
+  vertical-align: center;
+  margin-right: 12px;
+}
+
+.checkbox:hover {
+  background-color: #cccccc;
+}
+
+.chooseCtr {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 1px solid red;
+  margin-right: 4px;
+  position: relative;
+}
+
+.choose:after {
+  content: "✔";
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -6px;
+  margin-left: -4px;
+
+
+}
+
+//http://nec.netease.com/framework/css-animation.html

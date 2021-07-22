@@ -1,0 +1,13 @@
+.card {
+  margin: 0;
+  padding: 0;
+  color: #000000d9;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  list-style: none;
+  font-feature-settings: "tnum";
+  background: #fff;
+  border-radius: 2px;
+  border: 1px solid black;
+  padding: 24px;
+}

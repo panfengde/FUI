@@ -1,0 +1,10 @@
+.button {
+  border: 1px solid royalblue;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.button:active {
+  box-shadow: 0px 0px 1px 1px royalblue;
+}

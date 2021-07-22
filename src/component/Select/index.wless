@@ -1,0 +1,23 @@
+.select {
+  //box-sizing: border-box;
+  width: 60px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  .chooseValue {
+    width: 100%;
+    line-height: 20px;
+    border: 1px solid royalblue;
+    display: flex;
+    justify-content: space-between;
+  }
+  .optionBox {
+    box-sizing: border-box;
+    position: absolute;
+    top: 24px;
+    width: 100%;
+    background-color: gold;
+  }
+}
+
