@@ -9,7 +9,7 @@ module.exports = {
         contentBase: './dist',
     },
     entry: {
-        index: './src/devIndex.js',
+        index: './src/devIndex.tsx',
     },
     output: {
         filename: '[name].[contenthash].js',

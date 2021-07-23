@@ -1,5 +1,5 @@
 import button from "./Button";
-import select from "./Select";
+/*import select from "./Select";
 import option from "./Option";
 import Input from "./Input";
 import checkboxGroup from "./CheckboxGroup";
@@ -8,14 +8,14 @@ import BreadCrumb from "./BreadCrumb";``
 import card from "./Card";
 import Row from "./Row";
 import Col from "./Col";
-import {DropDown} from "./DropDown";
+import {DropDown} from "./DropDown";*/
 
 const dic = [
     {
         name: "button-f",
         component: button
     },
-    {
+  /*  {
         name: "select-f",
         component: select
     },
@@ -54,7 +54,7 @@ const dic = [
     {
         name: "drop-down-f",
         component: DropDown
-    },
+    },*/
 ];
 
 

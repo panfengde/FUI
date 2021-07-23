@@ -1,13 +1,12 @@
-import React from "react"
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 import {createStyle, createLink} from "../../tools";
-import container from "component/container"
+import container from "../container"
 
 
 function Button() {
-
     return <div className="a-bounce button" onClick={() => {
-        console.log(111)
+        console.log("click")
     }}>
         <slot/>
     </div>
@@ -18,7 +17,6 @@ class button_f extends container {
         super();
         this.createInlineBlockContainer()
     }
-
     connectedCallback() {
         import('assets/animation.link').then((obj) => {
             //console.log(obj)
@@ -31,6 +29,5 @@ class button_f extends container {
         ReactDOM.render(<Button/>, this.container);
     }
 }
-
 export default button_f;
 

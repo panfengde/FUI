@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": true,
+    "moduleResolution": "node",
+    //解决 动态加载
+    //"module": "es6",
+    "module": "esnext",
+    //保留如import _ from 'lodash';的语法被让它作为一种默认的导入方式
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
+  }
+}

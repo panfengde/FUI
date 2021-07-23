@@ -5,7 +5,6 @@ import container from "component/container"
 
 
 function Checkbox(props) {
-
     return <div className="checkbox">
         <div className={props.choose ? "chooseCtr choose" : "chooseCtr"}/>
         <slot/>

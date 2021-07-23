@@ -45,6 +45,11 @@ let config = {
                 ]
             },
             {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
+            {
                 test: /\.link$/,
                 use: ['file-loader'],
             },
@@ -56,7 +61,7 @@ let config = {
             src: path.resolve(__dirname, 'src/'),
             component: path.resolve(__dirname, 'src/component/'),
         },
-        extensions: ['.jsx', '.js', '.ts'],
+        extensions: ['.tsx', '.jsx', '.js', '.ts'],
     },
 };
 module.exports = config;
