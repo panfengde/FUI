@@ -3,7 +3,13 @@ import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
 import container from "component/container"
 
-function DropDown(props) {
+interface dropDownType {
+    type: string,
+    toggle: () => void,
+    show: boolean
+}
+
+function DropDown(props: dropDownType) {
     function type() {
         switch (props.type) {
             case "topLeft":
@@ -30,12 +36,13 @@ function DropDown(props) {
 }
 
 class dropDown_f extends container {
+
     constructor() {
         super();
         this.createInlineBlockContainer();
         this.state = {
             show: false,
-            type: this.getAttribute("type")||"bottomLeft"
+            type: this.getAttribute("type") || "bottomLeft"
         }
     }
 
@@ -59,7 +66,7 @@ class dropDown_f extends container {
         import('./index.wless').then((obj) => {
             createStyle(obj.default, this.shadow);
         });
-        this.container.onclick = (e) => {
+        this.container.onclick = (e: any) => {
             this.toggle();
             e.stopPropagation()
             /* let node = e.path.find((e) => e.nodeName === "OPTION-F");

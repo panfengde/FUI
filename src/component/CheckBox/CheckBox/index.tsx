@@ -1,10 +1,13 @@
 import React, {useState} from "react"
 import ReactDOM from 'react-dom';
-import {createStyle, createLink} from "../../tools";
+import {createStyle, createLink} from "src/tools";
 import container from "component/container"
 
+interface checkboxType {
+    choose: boolean
+}
 
-function Checkbox(props) {
+function Checkbox(props: checkboxType) {
     return <div className="checkbox">
         <div className={props.choose ? "chooseCtr choose" : "chooseCtr"}/>
         <slot/>
@@ -12,10 +15,12 @@ function Checkbox(props) {
 }
 
 class checkbox_f extends container {
+    choose: boolean
+
     constructor() {
         super();
         this.createInlineBlockContainer();
-        this.choose=false
+        this.choose = false
     }
 
     toggle() {
@@ -23,15 +28,16 @@ class checkbox_f extends container {
         this.render();
     }
 
-    render(){
+    render() {
         ReactDOM.render(<Checkbox choose={this.choose}/>, this.container);
     }
+
     connectedCallback() {
         import('./index.wless').then((obj) => {
             createStyle(obj.default, this.shadow)
         });
         this.render();
-        this.shadow.firstElementChild.onclick =(e)=>{
+        (this.shadow.firstElementChild as HTMLElement).onclick = (e:any) => {
             this.toggle();
             console.log(e)
         }

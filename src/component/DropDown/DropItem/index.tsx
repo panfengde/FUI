@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from 'react-dom';
-import {createStyle, createLink} from "../../tools";
+import {createStyle, createLink} from "src/tools";
 import container from "component/container"
 
 

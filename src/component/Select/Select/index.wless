@@ -5,6 +5,7 @@
   position: relative;
   cursor: pointer;
   user-select: none;
+
   .chooseValue {
     width: 100%;
     line-height: 20px;
@@ -12,9 +13,11 @@
     display: flex;
     justify-content: space-between;
   }
+
   .optionBox {
     box-sizing: border-box;
     position: absolute;
+    z-index: 100;
     top: 24px;
     width: 100%;
     background-color: gold;

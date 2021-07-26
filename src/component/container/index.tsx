@@ -1,4 +1,6 @@
-import {createStyle, createLink} from "../../tools";
+import "@webcomponents/webcomponentsjs/webcomponents-bundle";
+import '@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js';
+import {createStyle, createLink} from "src/tools";
 
 //
 interface stateType {
@@ -15,7 +17,6 @@ class BlockContainerInline extends HTMLElement {
     shadow: ShadowRoot;
     container: HTMLElement;
     state: stateType;
-    render: () => void;
 
     constructor() {
         super();
@@ -85,6 +86,10 @@ class BlockContainerInline extends HTMLElement {
         }
 
         */
+
+    render() {
+
+    }
 
 
 }

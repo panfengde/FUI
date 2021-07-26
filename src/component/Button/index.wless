@@ -1,8 +1,11 @@
+@import "~src/common.less";
+
 .button {
   border: 1px solid royalblue;
   cursor: pointer;
   touch-action: manipulation;
   user-select: none;
+  color: @color;
 }
 
 .button:active {

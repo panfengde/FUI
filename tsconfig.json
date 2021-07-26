@@ -12,6 +12,18 @@
     "module": "esnext",
     //保留如import _ from 'lodash';的语法被让它作为一种默认的导入方式
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "assets/*": [
+        "src/assets/*"
+      ],
+      "src/*": [
+        "src/*"
+      ],
+      "component/*": [
+        "src/component/*"
+      ]
+    }
   }
 }

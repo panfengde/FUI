@@ -1,11 +1,17 @@
 import React from "react"
 import ReactDOM from 'react-dom';
-import {createStyle, createLink} from "../../tools";
+import {createStyle, createLink} from "src/tools";
 import container from "component/container"
 
+interface bread{
+    title:string
+}
 
-function BreadCrumb(props) {
-    console.log(props)
+interface propsType {
+    data:Array<bread>,
+}
+
+function BreadCrumb(props:propsType) {
     return <div className="breadCrumb">
         {props.data.map((obj, index, arr) => {
             if (index !== arr.length - 1) {

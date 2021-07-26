@@ -1,10 +1,12 @@
 import React from "react"
 import ReactDOM from 'react-dom';
-import {createStyle, createLink} from "../../tools";
+import {createStyle, createLink} from "src/tools";
 import container from "component/container"
 
+interface colType {
+}
 
-function Col(props) {
+function Col(props: colType) {
     return <slot/>
 }
 
@@ -19,7 +21,7 @@ class col_f extends container {
 
     render() {
         this.container.className = this.state.span ? ("col-" + this.state.span) : "col-1";
-        ReactDOM.render(<Col span={this.state.span}/>, this.container);
+        ReactDOM.render(<Col/>, this.container);
     }
 
     connectedCallback() {

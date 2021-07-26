@@ -20,6 +20,17 @@ declare module "*.link" {
 
 declare namespace JSX {
     interface IntrinsicElements {
-        "button-f": any
+        "button-f": any,
+        "select-f": any,
+        "option-f": any,
+        "input-f": any,
+        "card-f": any,
+        "checkgroup-f": any,
+        "checkbox-f": any,
+        "breadcrumb-f": any,
+        "row-f": any,
+        "col-f": any,
+        "drop-down-f": any,
+        "drop-item-f": any,
     }
 }

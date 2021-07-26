@@ -1,9 +1,17 @@
 import React, {useState, useRef} from "react"
 import ReactDOM from 'react-dom';
-import {createStyle, createLink} from "../../tools";
+import {createStyle, createLink} from "src/tools";
 import container from "component/container"
 
-function Selelct(props) {
+interface propsType {
+    toggle: () => void;
+    txt: string,
+    show: boolean,
+    value: undefined | string;
+}
+
+function Select(props: propsType) {
+    console.log("------");
     return <div className="select">
         <div className="chooseValue" onClick={props.toggle}>
             <span>{props.txt}</span>
@@ -16,6 +24,11 @@ function Selelct(props) {
 }
 
 class select_f extends container {
+    choose: undefined | string;
+    txt: null | string;
+    show: boolean;
+
+
     constructor() {
         super();
         this.createInlineBlockContainer();
@@ -24,7 +37,7 @@ class select_f extends container {
         this.show = false;
     }
 
-    setTxt(node) {
+    setTxt(node: HTMLElement) {
         if (node) {
             this.txt = node.getAttribute("txt");
         }
@@ -36,10 +49,10 @@ class select_f extends container {
     }
 
     render() {
-        ReactDOM.render(<Selelct value={this.choose}
-                                 show={this.show}
-                                 txt={this.txt}
-                                 toggle={this.toggle.bind(this)}/>, this.container);
+        ReactDOM.render(<Select value={this.choose}
+                                show={this.show}
+                                txt={this.txt}
+                                toggle={this.toggle.bind(this)}/>, this.container);
     }
 
     connectedCallback() {
@@ -48,12 +61,16 @@ class select_f extends container {
             //console.log(obj)
             createLink(obj.default, this.shadow)
         });
+
         import('./index.wless').then((obj) => {
             createStyle(obj.default, this.shadow);
         });
+
         this.setTxt(this.shadow.querySelector(`slot[value="${this.choose}"]`));
-        this.container.onclick = (e) => {
-            let node = e.path.find((e) => e.nodeName === "OPTION-F");
+
+        this.container.onclick = (e: any) => {
+            //MouseEvent<HTMLDivElement>
+            let node = e.path.find((e: any) => e.nodeName === "OPTION-F");
             if (node) {
                 this.setTxt(node);
                 this.toggle();
@@ -69,6 +86,7 @@ class select_f extends container {
         this.render()
     }
 }
+
 
 export default select_f;
 
