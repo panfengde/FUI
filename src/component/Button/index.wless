@@ -5,7 +5,7 @@
   cursor: pointer;
   touch-action: manipulation;
   user-select: none;
-  color: @color;
+  color: var(--themeColor);;
 }
 
 .button:active {

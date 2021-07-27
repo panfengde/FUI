@@ -1,8 +1,6 @@
-import 'component/index'
 import ReactDOM from 'react-dom';
 import React, {useState, useEffect, useRef} from "react"
-import "normalize.css"
-
+import "./index"
 import FHTMLElement from "component/container"
 
 
@@ -16,6 +14,7 @@ function App() {
         }, 1000);
         console.log(inputEl.current)
     }, []);
+
     return <div>
         <button-f>
             {txt}
@@ -71,6 +70,7 @@ function App() {
 }
 
 document.body.innerHTML = `
+<p style="color: var(--themeColor)">ssssss</p>
 <div id="root"></div>
 <div>-----------------------</div>
  <button-f >1111</button-f>
@@ -100,7 +100,6 @@ link.type = "text/css";
 link.href = "./common.less";
 document.head.append(link);
 setTimeout(() => {
-
     let but: FHTMLElement = document.querySelector("#but");
     but.setState({
         data: [
@@ -111,7 +110,9 @@ setTimeout(() => {
     })
 }, 2000);
 
-
+setTimeout(() => {
+    document.body.style.setProperty('--themeColor', 'green');
+}, 3000);
 
 
 
