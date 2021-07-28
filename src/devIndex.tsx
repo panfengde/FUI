@@ -1,20 +1,18 @@
 import ReactDOM from 'react-dom';
 import React, {useState, useEffect, useRef} from "react"
 import "./index"
-import FHTMLElement from "component/container"
+import FHTMLElement from "component/Container"
 
 
 function App() {
     const inputEl = useRef(null);
     let [txt, setTxt] = useState("13344");
-
     useEffect(() => {
         setTimeout(() => {
             setTxt("hhhhh");
         }, 1000);
         console.log(inputEl.current)
     }, []);
-
     return <div>
         <button-f>
             {txt}
@@ -63,14 +61,44 @@ function App() {
                 <drop-item-f>1</drop-item-f>
                 <drop-item-f>2</drop-item-f>
             </card-f>
-
         </drop-down-f>
+        <menu-f>
+            <menu-item-f key="5" value="5">5</menu-item-f>
+            <menu-item-f key="6" value="6">6</menu-item-f>
+            <menu-item-f key="7" value="7">7</menu-item-f>
+        </menu-f>
 
+        <p>--------------</p>
+        <menu-f>
+            <sub-menu-f>
+                <p slot="placement"> hello</p>
+                <menu-item-f key="1" value="1">1</menu-item-f>
+                <menu-item-f key="2" value="2">2</menu-item-f>
+                <menu-item-f key="3" value="3">3</menu-item-f>
+            </sub-menu-f>
+            <menu-item-f key="4" value="4">4</menu-item-f>
+            <sub-menu-f>
+                <p slot="placement"> hello</p>
+                <menu-item-f key="5" value="5">5</menu-item-f>
+                <menu-item-f key="6" value="6">6</menu-item-f>
+                <menu-item-f key="7" value="7">7</menu-item-f>
+            </sub-menu-f>
+
+        </menu-f>
     </div>
 }
 
+document.body.innerHTML = `<div id="root"></div>`;
+
+setTimeout(() => {
+    ReactDOM.render(<App/>, document.querySelector("#root"));
+});
+
+// ▼▲▶◀
+
+/*
+
 document.body.innerHTML = `
-<p style="color: var(--themeColor)">ssssss</p>
 <div id="root"></div>
 <div>-----------------------</div>
  <button-f >1111</button-f>
@@ -90,15 +118,9 @@ document.body.innerHTML = `
         </drop-down-f>
 `;
 
-setTimeout(() => {
-    ReactDOM.render(<App/>, document.querySelector("#root"));
-});
 
-let link: any = document.createElement("Link");
-link.rel = "stylesheet/less";
-link.type = "text/css";
-link.href = "./common.less";
-document.head.append(link);
+
+
 setTimeout(() => {
     let but: FHTMLElement = document.querySelector("#but");
     but.setState({
@@ -109,9 +131,10 @@ setTimeout(() => {
         ]
     })
 }, 2000);
+*/
 
 setTimeout(() => {
-    document.body.style.setProperty('--themeColor', 'green');
+    document.body.style.setProperty('--themeColor-FUI', 'green');
 }, 3000);
 
 

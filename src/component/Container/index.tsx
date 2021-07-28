@@ -12,15 +12,27 @@ interface setStateType {
     [key: string]: any
 }
 
+//setState设置数据
+interface slotPropsType {
+    [key: string]: any
+}
+
+//插槽需要的Props
+interface childPropsType {
+    [key: string]: any
+}
+
+
 
 class BlockContainerInline extends HTMLElement {
     shadow: ShadowRoot;
     container: HTMLElement;
     state: stateType;
-
+    props: slotPropsType;
     constructor() {
         super();
         this.state = {};
+        this.props = {};
     }
 
     createBlockContainer() {
@@ -44,9 +56,35 @@ class BlockContainerInline extends HTMLElement {
         return this.container;
     }
 
+
+    /**
+     * 修改组件内部状态
+     * @param data
+     */
     setState(data: setStateType) {
         this.state = {...this.state, ...data};
         this.render && this.render();
+    }
+
+
+    /**
+     * 修改组件外部传递的状态
+     * @param props
+     */
+    setSlotProps(props: slotPropsType) {
+        this.props && (this.props = {...this.props, ...props});
+        this.render && this.render();
+    }
+
+    /**
+     * 给子组件传递props
+     * @param data
+     */
+    setChildProps(data:childPropsType) {
+        this.childNodes.forEach((node: any) => {
+            node.setSlotProps && node.setSlotProps(data);
+            node.setChildProps&&node.setChildProps(data);
+        });
     }
 
     connectedCallback() {
@@ -94,5 +132,13 @@ class BlockContainerInline extends HTMLElement {
 
 }
 
+/*const Container = new Proxy(BlockContainerInline, {
+    apply(target, ctx, args){
+        //console.log(arguments)
+        //Reflect.apply(...arguments);
+        console.log(target, ctx, args)
+        return Reflect.apply(target, ctx, args);
+    }
+});*/
 
 export default BlockContainerInline;

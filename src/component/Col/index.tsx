@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
-import container from "component/container"
+import Container from "component/Container"
 
 interface colType {
 }
@@ -10,7 +10,7 @@ function Col(props: colType) {
     return <slot/>
 }
 
-class col_f extends container {
+class col_f extends Container {
     constructor() {
         super();
         this.createInlineBlockContainer();

@@ -32,5 +32,8 @@ declare namespace JSX {
         "col-f": any,
         "drop-down-f": any,
         "drop-item-f": any,
+        "menu-f": any,
+        "sub-menu-f": any,
+        "menu-item-f": any,
     }
 }

@@ -1,12 +1,13 @@
-import button from "./Button";
-import Input from "./Input";
-import {Select, Option} from "./Select";
+import button from "component/Button";
+import Input from "component/Input";
+import {Select, Option} from "component/Select";
 import {CheckboxGroup, CheckBox} from "component/CheckBox";
-import BreadCrumb from "./BreadCrumb";
-import card from "./Card";
-import Row from "./Row";
-import Col from "./Col";
-import {DropDown, DropItem} from "./DropDown";
+import BreadCrumb from "component/BreadCrumb";
+import card from "component/Card";
+import Row from "component/Row";
+import Col from "component/Col";
+import {DropDown, DropItem} from "component/DropDown";
+import {Menu, MenuItem,SubMenu} from "component/Menu";
 
 const dic = [
     {
@@ -21,7 +22,6 @@ const dic = [
         name: "option-f",
         component: Option
     },
-
     {
         name: "input-f",
         component: Input
@@ -55,11 +55,18 @@ const dic = [
         component: DropDown
     },
     {
-        name: "drop-item-f",
-        component: DropItem
+        name: "menu-f",
+        component: Menu
+    },
+    {
+        name: "sub-menu-f",
+        component: SubMenu
+    },
+    {
+        name: "menu-item-f",
+        component: MenuItem
     },
 ];
-
 
 dic.forEach((obj) => {
     customElements.define(obj.name, obj.component);

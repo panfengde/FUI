@@ -1,0 +1,8 @@
+.sub_menu {
+  min-width:120px;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  background-color: gold;
+  align-items: center;
+}

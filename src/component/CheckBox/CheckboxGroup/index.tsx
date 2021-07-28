@@ -1,7 +1,7 @@
 import React, {useState, useRef} from "react"
 import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
-import container from "component/container"
+import Container from "component/Container"
 
 interface checkboxGroupType {
     value:string
@@ -11,7 +11,7 @@ function CheckboxGroup(props: checkboxGroupType) {
     return <slot/>
 }
 
-class CheckboxGroup_f extends container {
+class CheckboxGroup_f extends Container {
     value: Set<string>;
 
     constructor() {

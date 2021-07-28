@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {createStyle, createLink} from "src/tools";
-import container from "../container"
+import Container from "component/Container"
 
 
 function Button() {
@@ -12,11 +12,13 @@ function Button() {
     </div>
 }
 
-class button_f extends container {
+class Button_f extends Container {
+
     constructor() {
         super();
         this.createInlineBlockContainer()
     }
+
     connectedCallback() {
         import('assets/animation.link').then((obj) => {
             //console.log(obj)
@@ -28,6 +30,7 @@ class button_f extends container {
 
         ReactDOM.render(<Button/>, this.container);
     }
+
 }
-export default button_f;
+export default Button_f;
 

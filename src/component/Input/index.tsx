@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
-import container from "component/container"
+import Container from "component/Container"
 
 
 interface inputType {
@@ -21,7 +21,7 @@ function Input() {
     />
 }
 
-class input_f extends container {
+class input_f extends Container {
     constructor() {
         super();
         this.createInlineBlockContainer()

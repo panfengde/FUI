@@ -1,7 +1,7 @@
 import React, {useState, useRef} from "react"
 import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
-import container from "component/container"
+import Container from "component/Container"
 
 interface propsType {
     toggle: () => void;
@@ -23,7 +23,7 @@ function Select(props: propsType) {
     </div>
 }
 
-class select_f extends container {
+class select_f extends Container {
     choose: undefined | string;
     txt: null | string;
     show: boolean;

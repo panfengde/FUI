@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
-import container from "component/container"
+import Container from "component/Container"
 
 
 function Card() {
@@ -10,7 +10,7 @@ function Card() {
     </div>
 }
 
-class card_f extends container {
+class card_f extends Container {
     constructor() {
         super();
         this.createBlockContainer()

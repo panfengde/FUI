@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
-import container from "component/container"
+import Container from "component/Container"
 
 interface checkboxType {
     choose: boolean
@@ -14,7 +14,7 @@ function Checkbox(props: checkboxType) {
     </div>
 }
 
-class checkbox_f extends container {
+class checkbox_f extends Container {
     choose: boolean
 
     constructor() {
@@ -37,13 +37,11 @@ class checkbox_f extends container {
             createStyle(obj.default, this.shadow)
         });
         this.render();
-        (this.shadow.firstElementChild as HTMLElement).onclick = (e:any) => {
+        (this.shadow.firstElementChild as HTMLElement).onclick = (e: any) => {
             this.toggle();
-            console.log(e)
         }
     }
 }
-
 
 export default checkbox_f;
 

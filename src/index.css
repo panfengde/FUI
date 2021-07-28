@@ -1,3 +1,4 @@
-body{
-    --themeColor:#000;
+:root {
+    --themeColor-FUI:red
 }
+

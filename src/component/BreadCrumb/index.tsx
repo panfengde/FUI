@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
-import container from "component/container"
+import Container from "component/Container"
 
 interface bread{
     title:string
@@ -29,7 +29,7 @@ function BreadCrumb(props:propsType) {
     </div>
 }
 
-class breadCrumb_f extends container {
+class breadCrumb_f extends Container {
     constructor() {
         super();
         this.createInlineBlockContainer();

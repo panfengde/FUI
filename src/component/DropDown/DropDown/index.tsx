@@ -1,7 +1,7 @@
 import React, {useState, useRef} from "react"
 import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
-import container from "component/container"
+import Container from "component/Container"
 
 interface dropDownType {
     type: string,
@@ -35,7 +35,7 @@ function DropDown(props: dropDownType) {
     </div>
 }
 
-class dropDown_f extends container {
+class dropDown_f extends Container {
 
     constructor() {
         super();
