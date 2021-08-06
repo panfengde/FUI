@@ -35,5 +35,7 @@ declare namespace JSX {
         "menu-f": any,
         "sub-menu-f": any,
         "menu-item-f": any,
+        "tips-f": any,
+        "close-f": any,
     }
 }

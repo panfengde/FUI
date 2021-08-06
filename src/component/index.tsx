@@ -8,6 +8,8 @@ import Row from "component/Row";
 import Col from "component/Col";
 import {DropDown, DropItem} from "component/DropDown";
 import {Menu, MenuItem,SubMenu} from "component/Menu";
+import Close from "component/Close";
+import Tips from "component/Tips";
 
 const dic = [
     {
@@ -66,6 +68,14 @@ const dic = [
         name: "menu-item-f",
         component: MenuItem
     },
+    {
+        name: "tips-f",
+        component: Tips
+    },
+    {
+        name: "close-f",
+        component: Close
+    }
 ];
 
 dic.forEach((obj) => {

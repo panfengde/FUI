@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom';
 import React, {useState, useEffect, useRef} from "react"
 import "./index"
-import FHTMLElement from "component/Container"
 
 
 function App() {
@@ -85,6 +84,8 @@ function App() {
             </sub-menu-f>
 
         </menu-f>
+        <tips-f>11111</tips-f>
+        <close-f/>
     </div>
 }
 

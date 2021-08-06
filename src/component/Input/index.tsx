@@ -16,9 +16,7 @@ function Input() {
         }
     };
     return <div id="title" className="input" contentEditable placeholder="请输入内容"
-                onKeyDown={myFunction}
-
-    />
+                onKeyDown={myFunction}/>
 }
 
 class input_f extends Container {

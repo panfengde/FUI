@@ -23,12 +23,12 @@ interface childPropsType {
 }
 
 
-
 class BlockContainerInline extends HTMLElement {
     shadow: ShadowRoot;
     container: HTMLElement;
     state: stateType;
     props: slotPropsType;
+
     constructor() {
         super();
         this.state = {};
@@ -80,10 +80,10 @@ class BlockContainerInline extends HTMLElement {
      * 给子组件传递props
      * @param data
      */
-    setChildProps(data:childPropsType) {
+    setChildProps(data: childPropsType) {
         this.childNodes.forEach((node: any) => {
             node.setSlotProps && node.setSlotProps(data);
-            node.setChildProps&&node.setChildProps(data);
+            node.setChildProps && node.setChildProps(data);
         });
     }
 
@@ -91,6 +91,29 @@ class BlockContainerInline extends HTMLElement {
         // 在元素被添加到文档之后，浏览器会调用这个方法
         //（如果一个元素被反复添加到文档／移除文档，那么这个方法会被多次调用）
     }
+
+    /**
+     * 给组件定义从外部传入的事件
+     * @param actType
+     * @param callback
+     */
+    setAction(actType: string, callback?: () => void) {
+        //document.addEventListener('test', event => alert(event.detail));
+        this.addEventListener(actType, callback)
+    }
+
+    /**
+     * 通过DOM形式组件内部事件
+     * @param actType
+     */
+    doAction(actType: string) {
+        this.dispatchEvent(new CustomEvent(actType, {
+            bubbles: true,
+            composed: true,
+            detail: "composed"
+        }));
+    }
+
 
     /*
         disconnectedCallback() {

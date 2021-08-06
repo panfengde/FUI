@@ -1,0 +1,62 @@
+:host(tips-f) {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 1000;
+  color: #555555;
+
+}
+
+
+.info-panel-content {
+  display: inline-block;
+  position: relative;
+  margin-top: 15px;
+
+  //line-height: 30px;
+  background-color: #FFFFFF;
+  color: #555555;
+  text-align: left;
+  padding-left: 15px;
+  padding-right: 12px;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  letter-spacing: 0.1rem;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.6);
+
+
+  //三角形状
+  .info-panel-triple {
+    box-sizing: border-box;
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-bottom-color: #FFFFFF;
+    position: absolute;
+    right: 16px;
+    top: -14px;
+    z-index: 10;
+  }
+
+  //三角形状-阴影
+  .info-panel-triple-shadow {
+    box-sizing: border-box;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    right: 14px;
+    top: -22px;
+    z-index: 1;
+    filter: blur(2px);
+  }
+
+  .tipsContent {
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+
