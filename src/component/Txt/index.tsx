@@ -3,34 +3,26 @@ import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
 import Container from "component/Container"
 
+
 interface propsType {
-    type?: string,
+    content: string | number
 }
 
-function Popover(props: propsType = {type: "top"}) {
-    return (
-        <div className="popAddress">
-            <slot/>
-            <div className={props.type + " popContentBox"}>
-                <i className="triangle"/>
-                <slot name="popContent"/>
-            </div>
-        </div>
-    )
+function Txt(props: propsType) {
+    return <span>{props.content}</span>
 }
 
-
-class popover_f extends Container {
+class txt_f extends Container {
     constructor() {
         super();
         this.createInlineBlockContainer();
         this.state = {
-            type: "top"
+            content: ""
         }
     }
 
     render() {
-        ReactDOM.render(<Popover type={this.state.type}/>, this.container);
+        ReactDOM.render(<Txt content={this.state.content}/>, this.container);
     }
 
     connectedCallback() {
@@ -42,11 +34,11 @@ class popover_f extends Container {
         });
 
         this.setState({
-            type: this.getAttribute("type") || "top",
+            content: this.getAttribute("content"),
         })
-
         this.render()
     }
+
 }
 
-export default popover_f
+export default txt_f

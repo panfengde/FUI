@@ -7,6 +7,11 @@ interface stateType {
     [key: string]: any
 }
 
+//setStyle设置数据
+interface setStyleType {
+    [key: string]: any
+}
+
 //setState设置数据
 interface setStateType {
     [key: string]: any
@@ -56,6 +61,10 @@ class BlockContainerInline extends HTMLElement {
         return this.container;
     }
 
+    setStyle(style: setStyleType) {
+        this.state.style = {...this.state.style, ...style};
+        this.render && this.render();
+    }
 
     /**
      * 修改组件内部状态

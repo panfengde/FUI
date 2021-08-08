@@ -27,7 +27,7 @@ function Close(props: closeType) {
 class close_f extends Container {
     constructor() {
         super();
-        this.createBlockContainer();
+        this.createInlineBlockContainer();
         this.state = {
         };
 

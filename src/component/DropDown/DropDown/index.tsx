@@ -42,8 +42,9 @@ class dropDown_f extends Container {
         this.createInlineBlockContainer();
         this.state = {
             show: false,
-            type: this.getAttribute("type") || "bottomLeft"
+            type: "bottomLeft"
         }
+        console.log("----111", this.getAttribute("type"))
     }
 
     toggle() {
@@ -66,6 +67,11 @@ class dropDown_f extends Container {
         import('./index.wless').then((obj) => {
             createStyle(obj.default, this.shadow);
         });
+
+        this.setState({
+            type: this.getAttribute("type") || "bottomLeft",
+        })
+
         this.container.onclick = (e: any) => {
             this.toggle();
             e.stopPropagation()

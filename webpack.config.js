@@ -9,6 +9,7 @@ module.exports = {
         contentBase: './dist',
     },
     entry: {
+        //host: '0.0.0.0',
         index: './src/devIndex.tsx',
     },
     output: {

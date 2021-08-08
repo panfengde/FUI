@@ -10,6 +10,10 @@ import {DropDown, DropItem} from "component/DropDown";
 import {Menu, MenuItem,SubMenu} from "component/Menu";
 import Close from "component/Close";
 import Tips from "component/Tips";
+import popover from "component/Popover";
+import txt from "component/Txt";
+import group from "component/Group";
+import img from "component/Img";
 
 const dic = [
     {
@@ -75,6 +79,22 @@ const dic = [
     {
         name: "close-f",
         component: Close
+    },
+    {
+        name: "popover-f",
+        component: popover
+    },
+    {
+        name: "txt-f",
+        component: txt
+    },
+    {
+        name: "group-f",
+        component: group
+    },
+    {
+        name: "img-f",
+        component: img
     }
 ];
 

@@ -5,10 +5,18 @@ import "./index"
 
 function App() {
     const inputEl = useRef(null);
+    const groupRef = useRef(null);
     let [txt, setTxt] = useState("13344");
     useEffect(() => {
         setTimeout(() => {
             setTxt("hhhhh");
+
+            groupRef.current.setStyle({
+                position:"absolute",
+                top:100,
+                right:100,
+            })
+
         }, 1000);
         console.log(inputEl.current)
     }, []);
@@ -66,7 +74,6 @@ function App() {
             <menu-item-f key="6" value="6">6</menu-item-f>
             <menu-item-f key="7" value="7">7</menu-item-f>
         </menu-f>
-
         <p>--------------</p>
         <menu-f>
             <sub-menu-f>
@@ -82,10 +89,58 @@ function App() {
                 <menu-item-f key="6" value="6">6</menu-item-f>
                 <menu-item-f key="7" value="7">7</menu-item-f>
             </sub-menu-f>
-
         </menu-f>
         <tips-f>11111</tips-f>
         <close-f/>
+        <row-f>
+            <col-f span="3">
+                <popover-f type="right">
+                    <div slot="popContent">
+                        <p style={{width: 70}}>内容</p>
+                    </div>
+                    <span style={{border: "1px solid black"}}>top</span>
+                </popover-f>
+            </col-f>
+
+            <col-f span="3">
+                <popover-f type="top">
+                    <div slot="popContent">
+                        <p style={{width: 100}}>内容</p>
+                    </div>
+                    <span style={{border: "1px solid black"}}>right</span>
+                </popover-f>
+            </col-f>
+
+            <col-f span="3">
+                <popover-f type="bottom">
+                    <div slot="popContent">
+                        <p>1111111</p>
+                        <p>222</p>
+                        <p>33333</p>
+                    </div>
+                    <span style={{border: "1px solid black"}}>bottom</span>
+                </popover-f>
+            </col-f>
+
+            <col-f span="3">
+                <popover-f type="left">
+                    <div slot="popContent">
+                        <div>内容</div>
+                    </div>
+                    <span style={{border: "1px solid black"}}>left</span>
+                </popover-f>
+            </col-f>
+
+        </row-f>
+        <txt-f content="hello world"/>
+
+        <group-f ref={groupRef}>
+            <txt-f content="hello world1"/>
+            <txt-f content="hello world2"/>
+            <close-f/>
+        </group-f>
+        <img-f/>
+
     </div>
 }
 

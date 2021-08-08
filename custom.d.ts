@@ -1,3 +1,8 @@
+declare module "*.png" {
+    const content: any;
+    export default content;
+}
+
 declare module "*.css" {
     const content: any;
     export default content;
@@ -37,5 +42,9 @@ declare namespace JSX {
         "menu-item-f": any,
         "tips-f": any,
         "close-f": any,
+        "popover-f": any,
+        "txt-f": any,
+        "group-f": any,
+        "img-f": any,
     }
 }

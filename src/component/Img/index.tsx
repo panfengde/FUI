@@ -3,34 +3,27 @@ import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
 import Container from "component/Container"
 
+const png=require("assets/img/img.png")
+console.log(png)
 interface propsType {
-    type?: string,
+    content: string | number
 }
 
-function Popover(props: propsType = {type: "top"}) {
-    return (
-        <div className="popAddress">
-            <slot/>
-            <div className={props.type + " popContentBox"}>
-                <i className="triangle"/>
-                <slot name="popContent"/>
-            </div>
-        </div>
-    )
+function Img(props: propsType) {
+    return <img src={png} alt=""/>
 }
 
-
-class popover_f extends Container {
+class img_f extends Container {
     constructor() {
         super();
         this.createInlineBlockContainer();
         this.state = {
-            type: "top"
+            content: ""
         }
     }
 
     render() {
-        ReactDOM.render(<Popover type={this.state.type}/>, this.container);
+        ReactDOM.render(<Img content={this.state.content}/>, this.container);
     }
 
     connectedCallback() {
@@ -40,13 +33,12 @@ class popover_f extends Container {
         import('./index.wless').then((obj) => {
             createStyle(obj.default, this.shadow)
         });
-
         this.setState({
-            type: this.getAttribute("type") || "top",
+            //content: this.getAttribute("content"),
         })
-
         this.render()
     }
+
 }
 
-export default popover_f
+export default img_f
