@@ -1,7 +1,8 @@
 import ReactDOM from 'react-dom';
 import React, {useState, useEffect, useRef} from "react"
 import "./index"
-
+import png from "./assets/img/hello.png"
+console.log(png)
 
 function App() {
     const inputEl = useRef(null);

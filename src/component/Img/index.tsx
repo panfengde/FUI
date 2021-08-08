@@ -2,15 +2,13 @@ import React from "react"
 import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
 import Container from "component/Container"
-
-const png=require("assets/img/img.png")
-console.log(png)
+import png from "assets/img/hello.png"
 interface propsType {
     content: string | number
 }
 
 function Img(props: propsType) {
-    return <img src={png} alt=""/>
+    return <img  src={png} alt=""/>
 }
 
 class img_f extends Container {
