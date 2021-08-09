@@ -3,38 +3,27 @@ import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
 import Container from "component/Container"
 
-interface styleType {
-    position: "static" | "absolute" | "relative" | "fixed",
-    left: number | string,
-    top: number | string
-}
-
 interface propsType {
-    style: styleType
-
+    content: string | number
 }
 
-function Group(props: propsType) {
-    return <div style={{...props.style}}>
+function Tab(props: propsType) {
+    return <div>
         <slot/>
     </div>
 }
 
-class group_f extends Container {
+class tab_f extends Container {
     constructor() {
         super();
+        this.createInlineBlockContainer();
         this.state = {
-            style: {
-                position: "static",
-                right: 0,
-                top: 0
-            }
+            content: ""
         }
-        this.createBlockContainer();
     }
 
     render() {
-        ReactDOM.render(<Group style={this.state.style}/>, this.container);
+        ReactDOM.render(<Tab content={this.state.content}/>, this.container);
     }
 
     connectedCallback() {
@@ -44,9 +33,10 @@ class group_f extends Container {
         import('./index.wless').then((obj) => {
             createStyle(obj.default, this.shadow)
         });
-        this.render()
+        this.render();
+
     }
+
 }
 
-
-export default group_f
+export default tab_f

@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom';
 import React, {useState, useEffect, useRef} from "react"
 import "./index"
 import png from "./assets/img/hello.png"
+
 console.log(png)
 
 function App() {
@@ -13,9 +14,9 @@ function App() {
             setTxt("hhhhh");
 
             groupRef.current.setStyle({
-                position:"absolute",
-                top:100,
-                right:100,
+                position: "absolute",
+                top: 100,
+                right: 100,
             })
 
         }, 1000);
@@ -141,6 +142,10 @@ function App() {
             <close-f/>
         </group-f>
         <img-f/>
+        <tabs-f>
+            <tab-f name="one" key="111">111111</tab-f>
+            <tab-f name="two" key="2222">111111</tab-f>
+        </tabs-f>
 
     </div>
 }
@@ -176,7 +181,12 @@ document.body.innerHTML = `
 `;
 
 
-
+<tab-f name="one" slot="one">
+                111111
+            </tab-f>
+            <tab-f name="two" slot="two">
+                22222222
+            </tab-f>
 
 setTimeout(() => {
     let but: FHTMLElement = document.querySelector("#but");

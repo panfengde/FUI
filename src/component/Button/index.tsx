@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import {createStyle, createLink} from "src/tools";
 import Container from "component/Container"
 
-
 function Button() {
     return <div className="a-bounce button" onClick={() => {
         console.log("click")

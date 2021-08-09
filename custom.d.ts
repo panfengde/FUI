@@ -49,5 +49,7 @@ declare namespace JSX {
         "txt-f": any,
         "group-f": any,
         "img-f": any,
+        "tabs-f": any,
+        "tab-f": any,
     }
 }

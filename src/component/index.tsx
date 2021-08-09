@@ -7,13 +7,14 @@ import card from "component/Card";
 import Row from "component/Row";
 import Col from "component/Col";
 import {DropDown, DropItem} from "component/DropDown";
-import {Menu, MenuItem,SubMenu} from "component/Menu";
+import {Menu, MenuItem, SubMenu} from "component/Menu";
 import Close from "component/Close";
 import Tips from "component/Tips";
 import popover from "component/Popover";
 import txt from "component/Txt";
 import group from "component/Group";
 import img from "component/Img";
+import {Tabs, Tab} from "component/Tabs";
 
 const dic = [
     {
@@ -95,7 +96,15 @@ const dic = [
     {
         name: "img-f",
         component: img
-    }
+    },
+    {
+        name: "tabs-f",
+        component: Tabs
+    },
+    {
+        name: "tab-f",
+        component: Tab
+    },
 ];
 
 dic.forEach((obj) => {

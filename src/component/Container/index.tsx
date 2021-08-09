@@ -33,15 +33,28 @@ class BlockContainerInline extends HTMLElement {
     container: HTMLElement;
     state: stateType;
     props: slotPropsType;
+    pendingRender:boolean;
 
     constructor() {
         super();
         this.state = {};
         this.props = {};
+        this.pendingRender=false
+    }
+    doRender(){
+        //排队，避免重复的Render
+        if(this.pendingRender){
+            return;
+        }
+        this.pendingRender=true;
+        setTimeout(() => {
+            this.render && this.render();
+            this.pendingRender=false;
+        });
     }
 
     createBlockContainer() {
-        this.shadow = this.attachShadow({mode: 'closed'});
+        this.shadow = this.attachShadow({mode: 'open'});
         this.container = document.createElement('div');
         this.shadow.append(this.container);
         import('./index.wless').then((obj) => {
@@ -51,7 +64,7 @@ class BlockContainerInline extends HTMLElement {
     }
 
     createInlineBlockContainer() {
-        this.shadow = this.attachShadow({mode: 'closed'});
+        this.shadow = this.attachShadow({mode: 'open'});
         this.container = document.createElement('div');
         this.container.style.display = "inline-block";
         this.shadow.append(this.container);
@@ -63,7 +76,8 @@ class BlockContainerInline extends HTMLElement {
 
     setStyle(style: setStyleType) {
         this.state.style = {...this.state.style, ...style};
-        this.render && this.render();
+        this.doRender()
+
     }
 
     /**
@@ -72,7 +86,7 @@ class BlockContainerInline extends HTMLElement {
      */
     setState(data: setStateType) {
         this.state = {...this.state, ...data};
-        this.render && this.render();
+        this.doRender()
     }
 
 
@@ -82,7 +96,7 @@ class BlockContainerInline extends HTMLElement {
      */
     setSlotProps(props: slotPropsType) {
         this.props && (this.props = {...this.props, ...props});
-        this.render && this.render();
+        this.doRender()
     }
 
     /**
@@ -114,12 +128,13 @@ class BlockContainerInline extends HTMLElement {
     /**
      * 通过DOM形式组件内部事件
      * @param actType
+     * @param detail
      */
-    doAction(actType: string) {
+    doAction(actType: string, detail?: any) {
         this.dispatchEvent(new CustomEvent(actType, {
             bubbles: true,
             composed: true,
-            detail: "composed"
+            detail: detail
         }));
     }
 
