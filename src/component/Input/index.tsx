@@ -2,14 +2,13 @@ import React from "react"
 import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
 import Container from "component/Container"
-
+import style from './index.wless'
 
 interface inputType {
 
 }
 
 function Input() {
-
     const myFunction = () => {
         if (window.event && (window.event as KeyboardEvent).keyCode === 13) {
             window.event.returnValue = false;
@@ -22,17 +21,11 @@ function Input() {
 class input_f extends Container {
     constructor() {
         super();
-        this.createInlineBlockContainer()
+        this.createBlockContainer()
     }
 
-    connectedCallback() {
-        import('assets/animation.link').then((obj) => {
-            createLink(obj.default, this.shadow)
-        });
-        import('./index.wless').then((obj) => {
-            createStyle(obj.default, this.shadow)
-        });
-
+    willMount() {
+        createStyle(style, this.shadow)
         ReactDOM.render(<Input/>, this.container);
     }
 };

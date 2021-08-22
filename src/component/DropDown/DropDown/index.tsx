@@ -36,10 +36,9 @@ function DropDown(props: dropDownType) {
 }
 
 class dropDown_f extends Container {
-
     constructor() {
         super();
-        this.createInlineBlockContainer();
+        this.createBlockContainer();
         this.state = {
             show: false,
             type: "bottomLeft"
@@ -60,10 +59,7 @@ class dropDown_f extends Container {
             toggle={this.toggle.bind(this)}/>, this.container);
     }
 
-    connectedCallback() {
-        import('assets/animation.link').then((obj) => {
-            createLink(obj.default, this.shadow)
-        });
+    willMount() {
         import('./index.wless').then((obj) => {
             createStyle(obj.default, this.shadow);
         });

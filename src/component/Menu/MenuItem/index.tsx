@@ -29,13 +29,11 @@ class MenuItem_f extends Container {
         ReactDOM.render(<MenuItem choose={this.state.value === this.props.chooseValue}/>, this.container);
     }
 
-    connectedCallback() {
-        import('assets/animation.link').then((obj) => {
-            createLink(obj.default, this.shadow)
-        });
+    willMount() {
         import('./index.wless').then((obj) => {
             createStyle(obj.default, this.shadow)
         });
+        
         this.render();
         this.setState({
             value: this.getAttribute("value"),

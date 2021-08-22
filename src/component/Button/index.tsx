@@ -2,34 +2,32 @@ import React from "react";
 import ReactDOM from "react-dom";
 import {createStyle, createLink} from "src/tools";
 import Container from "component/Container"
+import style from './index.wless'
+
+console.log(style);
 
 function Button() {
-    return <div className="a-bounce button" onClick={() => {
-        console.log("click")
-    }}>
+    return <div className="button ripple">
         <slot/>
     </div>
 }
 
 class Button_f extends Container {
-
     constructor() {
         super();
-        this.createInlineBlockContainer()
+        this.createBlockContainer()
     }
 
-    connectedCallback() {
-        import('assets/animation.link').then((obj) => {
-            //console.log(obj)
-            createLink(obj.default, this.shadow)
-        });
-        import('./index.wless').then((obj) => {
-            createStyle(obj.default, this.shadow)
-        });
+    willMount() {
 
+        createStyle(style, this.shadow)
+        /*this.container.addEventListener("click", () => {
+            console.log("----");
+        })*/
         ReactDOM.render(<Button/>, this.container);
     }
 
 }
+
 export default Button_f;
 

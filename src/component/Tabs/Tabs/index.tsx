@@ -1,40 +1,58 @@
-import React, {useRef, useEffect} from "react"
+import React, {useRef, useState, useEffect} from "react"
 import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
 import Container from "component/Container"
 
-interface tabType {
-    name: string,
-    key: string
-}
 
 interface propsType {
-    chooseKey: string,
-    content: string | number,
-    tabs: Array<tabType>,
+    chooseSlot: string,
+    tabs: Array<string>,
     chooseTab: (e: any) => void,
 
 }
 
 function Tabs(props: propsType) {
+    const margin = 12;
+    const padding = 12;
+    const [left, setLeft] = useState(0)
+    const [width, setWidth] = useState(0)
+    const [tabObj, SetTabObj] = useState([])
+
     const contentRef = useRef(null);
+    const tabTitleClick = (thisObj: any, tabObj: Array<any>, index: number) => {
+        setWidth(thisObj.ref.clientWidth + padding * 2);
+        let left = tabObj.slice(0, index).reduce((origin, obj) => {
+            return origin + obj.ref.clientWidth + margin * 2;
+        }, 0);
+        setLeft(left);
+        props.chooseTab(thisObj.name)
+    };
+
     useEffect(() => {
-        debugger
-        console.log(contentRef.current.assignedSlot)
-    }, [])
+        SetTabObj(props.tabs.map((name) => {
+            return {
+                name: name,
+                ref: null
+            }
+        }))
+    }, [props.tabs]);
+
     //assignedSlot
-    return <div>
-        <p>
-            {props.tabs.map((obj) => <span
+    return <div className="tabs">
+        <div className="tabsTitle">
+            {tabObj.map((obj: any, index) => <span
+                className="tabs-tab"
                 onClick={() => {
-                    props.chooseTab(obj.key)
+                    tabTitleClick(obj, tabObj, index)
                 }}
-                key={obj.key}>
-                {obj.name}
-            </span>)}
-        </p>
+                ref={(dom) => obj.ref = dom}
+                key={obj.name}
+                dangerouslySetInnerHTML={{__html: obj.name}}
+            />)}
+            <span className="chooseBar" style={{left, width}}/>
+        </div>
         <div ref={contentRef}>
-            <slot name={props.chooseKey}/>
+            <slot name={props.chooseSlot}/>
         </div>
     </div>
 }
@@ -44,54 +62,65 @@ class tabs_f extends Container {
         super();
         this.createBlockContainer();
         this.state = {
-            tabs: [
-                {name: "one", key: "one"},
-                {name: "two", key: "two"}
-            ] as Array<tabType>,
-            chooseKey: "",
-            content: ""
+            tabs: [] as Array<string>,
+            chooseSlot: null,
+            defaultChooseSlot: null
         }
     }
+
+    update = () => {
+        this.getTabsInfo();
+    }
+
 
     render() {
         ReactDOM.render(<Tabs
             chooseTab={this.chooseTab.bind(this)}
             tabs={this.state.tabs}
-            chooseKey={this.state.chooseKey}
-            content={this.state.content}/>, this.container);
+            chooseSlot={this.state.chooseSlot}
+        />, this.container);
     }
 
     listenChooseTab() {
-        this.addEventListener("chooseKey", (key: any) => {
+        this.addEventListener("chooseSlot", (event: any) => {
             this.setState({
-                chooseKey: key
+                chooseSlot: event.detail
             })
+
         })
     }
 
     chooseTab(key: string) {
-        this.doAction("chooseKey", key)
+        //
+        this.doAction("chooseSlot", key)
     }
 
-    addTab(tab: tabType) {
-        //this.state.tabs.
-    }
-
-
-    connectedCallback() {
-        import('assets/animation.link').then((obj) => {
-            createLink(obj.default, this.shadow)
+    getTabsInfo() {
+        let tads: Array<string> = [];
+        this.childNodes.forEach((node: any) => {
+            if (node.nodeName === "TAB-F") {
+                tads.push(node.getAttribute("slot"))
+            }
         });
+
+        this.setState({
+            chooseSlot: tads[0],
+            tabs: tads
+        });
+    }
+
+    willMount() {
         import('./index.wless').then((obj) => {
             createStyle(obj.default, this.shadow)
         });
-        this.setState({
-            //content: this.getAttribute("content"),
-        })
+        
         // 插槽能被添加/删除/代替
         this.listenChooseTab();
         this.render();
+    }
 
+    didMount() {
+        this.getTabsInfo();
     }
 
 }

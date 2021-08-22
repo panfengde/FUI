@@ -41,13 +41,11 @@ class tips_f extends Container {
         this.remove()
     }
 
-    connectedCallback() {
-        import('assets/animation.link').then((obj) => {
-            createLink(obj.default, this.shadow)
-        });
+    willMount() {
         import('./index.wless').then((obj) => {
             createStyle(obj.default, this.shadow)
         });
+        
         this.render();
     }
 }

@@ -2,38 +2,38 @@ import React from "react"
 import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
 import Container from "component/Container"
-import png from "assets/img/hello.png"
+import png from "assets/img/hello.png";
+import style from './index.wless'
+
 interface propsType {
-    content: string | number
+    src: string
 }
 
 function Img(props: propsType) {
-    return <img  src={png} alt=""/>
+    return <img  className="img" src={props.src} alt=""/>
 }
 
 class img_f extends Container {
     constructor() {
         super();
-        this.createInlineBlockContainer();
+        this.createBlockContainer();
         this.state = {
-            content: ""
+            src: png
         }
     }
 
     render() {
-        ReactDOM.render(<Img content={this.state.content}/>, this.container);
+        ReactDOM.render(<Img src={this.state.src}/>, this.container);
     }
 
-    connectedCallback() {
-        import('assets/animation.link').then((obj) => {
-            createLink(obj.default, this.shadow)
-        });
-        import('./index.wless').then((obj) => {
-            createStyle(obj.default, this.shadow)
-        });
-        this.setState({
-            //content: this.getAttribute("content"),
-        })
+    willMount() {
+        createStyle(style, this.shadow)
+        let src=this.getAttribute("src");
+        if(src){
+            this.setState({
+                src: src,
+            })
+        }
         this.render()
     }
 

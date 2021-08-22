@@ -2,11 +2,11 @@ import React from "react"
 import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
 import Container from "component/Container"
-
+import style from './index.wless'
 
 function Row() {
-    return <div >
-        <slot className="row"/>
+    return <div className="rowBox">
+        <slot/>
     </div>
 }
 
@@ -20,17 +20,9 @@ class row_f extends Container {
         ReactDOM.render(<Row/>, this.container);
     }
 
-    connectedCallback() {
-        import('assets/animation.link').then((obj) => {
-            //console.log(obj)
-            createLink(obj.default, this.shadow)
-        });
-        import('./index.wless').then((obj) => {
-            createStyle(obj.default, this.shadow)
-        });
-
+    willMount() {
+        createStyle(style, this.shadow);
         this.render();
-
     }
 }
 

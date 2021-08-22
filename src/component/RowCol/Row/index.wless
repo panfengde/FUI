@@ -1,11 +1,16 @@
-.row {
+.rowBox {
+  box-sizing: border-box;
+  min-height: var(--blockHeight-FUI);
+  //margin-bottom: var(--marginBottom-FUI);
+  //padding: var(--blockPadding);
   width: 100%;
   display: flex;
-  flex-flow: row wrap;
+  line-height:var(--blockHeight-FUI);
 }
 
 ::slotted(col-f) {
   box-sizing: border-box;
+  padding: 0 2px;
 }
 
 ::slotted(col-f[span="1"]) {

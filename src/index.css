@@ -1,4 +1,25 @@
 :root {
-    --themeColor-FUI:red
+    /*--themeColor-FUI:red*/
+    --fontSize-FUI: 14px;
+    --blockHeight-FUI: 32px;
+    --themeBackColor-FUI: #1890ff;
+    --hoverColor: #1890FF80;
+    --marginBottom-FUI: 6px;
+    --blockPadding: 6px 12px;
+    --blockPaddingLeft: 8px;
+    --border: 1px solid #ccc;
+    --boxShadow: 0 3px 6px -4px rgba(0, 0, 0, 0.2), 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
+    --borderRadius: 6px;
+
+    /*动画需要的*/
+    --animate-duration: 1s;
+    --animate-delay: 1s;
+    --animate-repeat: 1;
 }
 
+/*
+:root {
+    --animate-duration: 1s;
+    --animate-delay: 1s;
+    --animate-repeat: 1;
+}*/

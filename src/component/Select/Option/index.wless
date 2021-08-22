@@ -1,9 +1,14 @@
 .Option {
   box-sizing: border-box;
   width: 100%;
+  height: var(--blockHeight-FUI);
+  font-size: var(--fontSize-FUI);
+  line-height: var(--blockHeight-FUI);
+  padding-left: var(--blockPaddingLeft);
+  //padding: var(--blockPadding);
 }
 
 .Option:hover {
-  background-color: royalblue;
+  background-color: #1890FF80;
 }
 //http://nec.netease.com/framework/css-animation.html

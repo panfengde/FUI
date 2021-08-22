@@ -45,11 +45,8 @@ class breadCrumb_f extends Container {
         ReactDOM.render(<BreadCrumb data={this.state.data}/>, this.container);
     }
 
-    connectedCallback() {
-        import('assets/animation.link').then((obj) => {
-            //console.log(obj)
-            createLink(obj.default, this.shadow)
-        });
+    willMount() {
+
         import('./index.wless').then((obj) => {
             createStyle(obj.default, this.shadow)
         });

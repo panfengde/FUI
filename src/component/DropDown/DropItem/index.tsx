@@ -16,7 +16,7 @@ class option_f extends Container {
         this.createBlockContainer();
     }
 
-    connectedCallback() {
+    willMount() {
         import('./index.wless').then((obj) => {
             createStyle(obj.default, this.shadow)
         });

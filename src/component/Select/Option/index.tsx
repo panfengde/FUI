@@ -2,7 +2,7 @@ import React from "react"
 import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
 import Container from "component/Container"
-
+import style from './index.wless'
 
 function Option() {
     return <div className="Option">
@@ -20,10 +20,8 @@ class option_f extends Container {
         ReactDOM.render(<Option/>, this.container);
     }
 
-    connectedCallback() {
-        import('./index.wless').then((obj) => {
-            createStyle(obj.default, this.shadow)
-        });
+    willMount() {
+        createStyle(style, this.shadow);
         this.render();
 
     }

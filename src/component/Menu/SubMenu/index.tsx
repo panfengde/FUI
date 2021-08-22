@@ -48,10 +48,7 @@ class SubMenu_f extends Container {
 
     }
 
-    connectedCallback() {
-        import('assets/animation.link').then((obj) => {
-            createLink(obj.default, this.shadow);
-        });
+    willMount() {
         import('./index.wless').then((obj) => {
             createStyle(obj.default, this.shadow);
         });

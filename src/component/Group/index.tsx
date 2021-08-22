@@ -37,13 +37,11 @@ class group_f extends Container {
         ReactDOM.render(<Group style={this.state.style}/>, this.container);
     }
 
-    connectedCallback() {
-        import('assets/animation.link').then((obj) => {
+    willMount() {
+        import('assets/__animation.link').then((obj) => {
             createLink(obj.default, this.shadow)
         });
-        import('./index.wless').then((obj) => {
-            createStyle(obj.default, this.shadow)
-        });
+        
         this.render()
     }
 }

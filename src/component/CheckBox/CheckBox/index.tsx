@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
 import Container from "component/Container"
+import style from './index.wless'
 
 interface checkboxType {
     choose: boolean
@@ -32,10 +33,8 @@ class checkbox_f extends Container {
         ReactDOM.render(<Checkbox choose={this.choose}/>, this.container);
     }
 
-    connectedCallback() {
-        import('./index.wless').then((obj) => {
-            createStyle(obj.default, this.shadow)
-        });
+    willMount() {
+        createStyle(style, this.shadow);
         this.render();
         (this.shadow.firstElementChild as HTMLElement).onclick = (e: any) => {
             this.toggle();

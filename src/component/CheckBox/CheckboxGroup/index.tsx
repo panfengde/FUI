@@ -2,13 +2,16 @@ import React, {useState, useRef} from "react"
 import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
 import Container from "component/Container"
+import style from './index.wless'
 
 interface checkboxGroupType {
     value:string
 }
 
 function CheckboxGroup(props: checkboxGroupType) {
-    return <slot/>
+    return <div className="checkboxs">
+        <slot/>
+    </div>
 }
 
 class CheckboxGroup_f extends Container {
@@ -16,7 +19,7 @@ class CheckboxGroup_f extends Container {
 
     constructor() {
         super();
-        this.createInlineBlockContainer();
+        this.createBlockContainer();
         this.value = new Set();
     }
 
@@ -26,28 +29,21 @@ class CheckboxGroup_f extends Container {
         } else {
             this.value.add(v)
         }
-        console.log(this.value)
+        //console.log(this.value)
     }
 
-    connectedCallback() {
+    willMount() {
         let _this = this;
-        import('assets/animation.link').then((obj) => {
-            //console.log(obj)
-            createLink(obj.default, this.shadow)
-        });
-
-        import('./index.wless').then((obj) => {
-            createStyle(obj.default, this.shadow);
-        });
+        createStyle(style, this.shadow);
         this.container.onclick = (e:any) => {
             let node = e.path.find((e:any) => e.nodeName === "CHECKBOX-F");
             if (node) {
                 this.changeValue(node.getAttribute("value"));
             }
         };
-        let a = this.getAttribute("getDom");
+     /*   let a = this.getAttribute("getDom");
         console.log(typeof a);
-        console.log(a);
+        console.log(a);*/
         ReactDOM.render(<CheckboxGroup value={this.getAttribute("value")}/>, this.container);
 
     }

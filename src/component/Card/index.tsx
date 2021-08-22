@@ -20,14 +20,11 @@ class card_f extends Container {
         ReactDOM.render(<Card/>, this.container);
     }
 
-    connectedCallback() {
-        import('assets/animation.link').then((obj) => {
-            //console.log(obj)
-            createLink(obj.default, this.shadow)
-        });
+    willMount() {
         import('./index.wless').then((obj) => {
             createStyle(obj.default, this.shadow)
         });
+        
         this.render();
 
     }

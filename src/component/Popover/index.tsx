@@ -33,13 +33,11 @@ class popover_f extends Container {
         ReactDOM.render(<Popover type={this.state.type}/>, this.container);
     }
 
-    connectedCallback() {
-        import('assets/animation.link').then((obj) => {
-            createLink(obj.default, this.shadow)
-        });
+    willMount() {
         import('./index.wless').then((obj) => {
             createStyle(obj.default, this.shadow)
         });
+        
 
         this.setState({
             type: this.getAttribute("type") || "top",

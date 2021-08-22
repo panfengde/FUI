@@ -5,19 +5,19 @@
 }
 
 .checkbox:hover {
-  background-color: #cccccc;
+  cursor: pointer;
 }
 
 .chooseCtr {
   display: inline-block;
   width: 15px;
   height: 15px;
-  border: 1px solid red;
+  border: 1px solid var(--themeBackColor-FUI);
   margin-right: 4px;
   position: relative;
 }
 
-.choose:after {
+.choose1:after {
   content: "✔";
   font-size: 12px;
   position: absolute;
@@ -25,8 +25,24 @@
   left: 50%;
   margin-top: -6px;
   margin-left: -4px;
+}
 
+.choose {
+  background-color: var(--themeBackColor-FUI);
+}
 
+.choose:after {
+  display: inline-block;
+  content: " ";
+  width: 5px;
+  height: 5px;
+  border: 2px solid #FFFFFF;
+  border-top: none;
+  border-right: none;
+  transform: rotate(-45deg);
+  margin-left: 3px;
+  margin-top: 1px;
+  position: absolute;
 }
 
 //http://nec.netease.com/framework/css-animation.html

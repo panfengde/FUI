@@ -2,6 +2,7 @@ import React, {useState, useRef} from "react"
 import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
 import Container from "component/Container"
+import style from './index.wless'
 
 interface propsType {
     toggle: () => void;
@@ -11,13 +12,12 @@ interface propsType {
 }
 
 function Select(props: propsType) {
-    console.log("------");
     return <div className="select">
         <div className="chooseValue" onClick={props.toggle}>
             <span>{props.txt}</span>
             <span>▽</span>
         </div>
-        {props.show && <div className="optionBox a-fadein">
+        {props.show && <div className="optionBox">
             <slot/>
         </div>}
     </div>
@@ -31,7 +31,7 @@ class select_f extends Container {
 
     constructor() {
         super();
-        this.createInlineBlockContainer();
+        this.createBlockContainer();
         this.choose = undefined;
         this.txt = null;
         this.show = false;
@@ -55,16 +55,9 @@ class select_f extends Container {
                                 toggle={this.toggle.bind(this)}/>, this.container);
     }
 
-    connectedCallback() {
+    willMount() {
         let _this = this;
-        import('assets/animation.link').then((obj) => {
-            //console.log(obj)
-            createLink(obj.default, this.shadow)
-        });
-
-        import('./index.wless').then((obj) => {
-            createStyle(obj.default, this.shadow);
-        });
+        createStyle(style, this.shadow);
 
         this.setTxt(this.shadow.querySelector(`slot[value="${this.choose}"]`));
 

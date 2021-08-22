@@ -1,26 +1,36 @@
 .select {
   //box-sizing: border-box;
-  width: 60px;
-  height: 20px;
+  width: 100%;
+  height: var(--blockHeight-FUI);
   position: relative;
   cursor: pointer;
   user-select: none;
+  font-size: var(--fontSize-FUI);
+  margin-bottom: var(--marginBottom-FUI);
 
   .chooseValue {
+    box-sizing: border-box;
     width: 100%;
-    line-height: 20px;
-    border: 1px solid royalblue;
+    height: 100%;
+    line-height: var(--blockHeight-FUI);
+    padding: var(--blockPadding);
+    border: var(--border);
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    border-radius: var(--borderRadius);
+    background-color: #FFFFFF;
   }
 
   .optionBox {
     box-sizing: border-box;
     position: absolute;
-    z-index: 100;
-    top: 24px;
+    z-index: 1000000;
+    top: var(--blockHeight-FUI);
+    margin-top: 4px;
     width: 100%;
-    background-color: gold;
+    box-shadow: var(--boxShadow);
+    background-color: #FFFFFF;
   }
 }
 

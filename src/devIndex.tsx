@@ -1,29 +1,25 @@
 import ReactDOM from 'react-dom';
 import React, {useState, useEffect, useRef} from "react"
 import "./index"
-import png from "./assets/img/hello.png"
+import "./dev.less"
 
-console.log(png)
-
-function App() {
+function _App() {
     const inputEl = useRef(null);
     const groupRef = useRef(null);
     let [txt, setTxt] = useState("13344");
     useEffect(() => {
         setTimeout(() => {
             setTxt("hhhhh");
-
             groupRef.current.setStyle({
                 position: "absolute",
                 top: 100,
                 right: 100,
             })
-
         }, 1000);
         console.log(inputEl.current)
     }, []);
     return <div>
-        <button-f>
+        <button-f draggable>
             {txt}
         </button-f>
         <div>分割线</div>
@@ -43,7 +39,17 @@ function App() {
             }
         </checkgroup-f>
         <breadcrumb-f/>
-        <p>row</p>
+
+        <row-f>
+            <col-f span="6">
+                <div style={{backgroundColor: "red"}}>1111</div>
+
+            </col-f>
+            <col-f span="6">
+                <button-f>------2-------</button-f>
+            </col-f>
+        </row-f>
+
         <row-f>
             <col-f span="6">
                 <select-f>
@@ -135,22 +141,90 @@ function App() {
 
         </row-f>
         <txt-f content="hello world"/>
-
-        <group-f ref={groupRef}>
-            <txt-f content="hello world1"/>
-            <txt-f content="hello world2"/>
-            <close-f/>
-        </group-f>
-        <img-f/>
+        {/*<img-f/>*/}
         <tabs-f>
-            <tab-f name="one" key="111">111111</tab-f>
-            <tab-f name="two" key="2222">111111</tab-f>
+            <tab-f slot="<button-f>111</button-f>">
+                <div slot="title">one</div>
+                <div slot="content">
+                    <p style={{color: "red"}}>1111</p>
+                    <p style={{color: "yellow"}}>xxxxx</p>
+                </div>
+            </tab-f>
+            <tab-f slot="two">
+                <div slot="title">one</div>
+                <div slot="content">
+                    <p style={{color: "blue"}}>22222</p>
+                    <p style={{color: "red"}}>xxxxx</p>
+                </div>
+            </tab-f>
+            <tab-f slot="two3">
+                <div slot="title">3333</div>
+                <div slot="content">
+                    <p style={{color: "blue"}}>3333</p>
+                    <p style={{color: "red"}}>44444</p>
+                </div>
+            </tab-f>
         </tabs-f>
 
+        <button-f>
+            <button-f>
+                1111
+            </button-f>
+            <button-f>
+                2222
+            </button-f>
+        </button-f>
+    </div>
+};
+
+function App() {
+    return <div className="box">
+        <button-f animation="animate__animated animate__jello">动画</button-f>
+        <input-f draggable>按钮</input-f>
+        <select-f animation="animate__animated animate__jello">
+            <option-f value="1" txt="1">11111
+            </option-f>
+            <option-f value="2" txt="2">222222</option-f>
+        </select-f>
+        <checkgroup-f animation="animate__animated animate__jello">
+            {
+                [1, 2, 3].map((v) => <checkbox-f key={v} value={v}>{v}-hello
+                </checkbox-f>)
+            }
+        </checkgroup-f>
+        <div className="rowCol">
+            <row-f animation="animate__animated animate__jello">
+                <col-f span={6}>
+                    <button-f>按钮</button-f>
+                </col-f>
+                <col-f span={6}>
+                    <button-f>按钮</button-f>
+                </col-f>
+            </row-f>
+        </div>
+        <div className="rowCol">
+            <row-f animation="animate__animated animate__jello">
+                <col-f span={4}>
+                    <button-f>按钮</button-f>
+                </col-f>
+                <col-f span={4}>
+                    <button-f>按钮</button-f>
+                </col-f>
+                <col-f span={4}>
+                    <button-f>按钮</button-f>
+                </col-f>
+            </row-f>
+        </div>
+        <img-f animation="animate__animated animate__jello"
+               src="https://preview.qiantucdn.com/58pic/00/94/54/69E58PICU4kbtF67SRY15_PIC2018.jpg!w1024_new_small"/>
+        <img-f animation="animate__animated animate__jello"
+               src="https://preview.qiantucdn.com/58pic/01/02/70/18s58PICJYedx3p81cDn1_PIC2018.jpg!w1024_new_small"/>
+        <img-f/>
     </div>
 }
 
-document.body.innerHTML = `<div id="root"></div>`;
+document.body.innerHTML = `<div id="root"> 
+</div>`;
 
 setTimeout(() => {
     ReactDOM.render(<App/>, document.querySelector("#root"));
