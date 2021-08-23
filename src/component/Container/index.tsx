@@ -31,6 +31,13 @@ interface childPropsType {
     [key: string]: any
 }
 
+interface attrNode {
+    type: string,//可以更具体
+    name: string,//可以更具体
+    key: string//可以更具体
+    valueRule: string//"他的曲直规则",//应该是个函数
+}
+
 
 class BlockContainerInline extends HTMLElement {
     shadow: ShadowRoot;
@@ -166,25 +173,34 @@ class BlockContainerInline extends HTMLElement {
     }
 
     static get observedAttributes() { // (3)
+        console.log("hhhh")
         return ["animation"];
     }
 
     attributeChangedCallback(name: string, oldValue: string, newValue: string) {
         console.log("attributeChangedCallback-----", name, oldValue, newValue)
         this.container.className = this.getAttribute("animation")
+        this.arrChangeCallback(name, oldValue, newValue)
         this.render();
     }
 
-    //todo
-    setDics() {
-        return {
-            fontSize: {
-                type: "color",
-                name: "字体",
-                value: "他的曲直规则",//应该是个函数
-            },
+    arrChangeCallback(name: string, oldValue: string, newValue: string) {
+    }
 
-        }
+    arrDic(): Array<string> {
+        return [];
+    }
+
+    //todo
+    attrSetDic(): Array<attrNode> {
+        return [
+            /* {
+                 type: "color",
+                 name: "字体",
+                 key: "fontSize",
+                 valueRule: "他的曲直规则",//应该是个函数
+             },*/
+        ]
     }
 
 

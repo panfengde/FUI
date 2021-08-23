@@ -10,7 +10,7 @@ interface propsType {
 }
 
 function Img(props: propsType) {
-    return <img  className="img" src={props.src} alt=""/>
+    return <img className="img" src={props.src} alt=""/>
 }
 
 class img_f extends Container {
@@ -22,14 +22,47 @@ class img_f extends Container {
         }
     }
 
+    arrDic(): Array<string> { // (3)
+        return ["src"];
+    }
+
+    arrChangeCallback(name: string, oldValue: string, newValue: string) {
+        //console.log("attributeChangedCallback-----", name, oldValue, newValue)
+        //this.container.className = this.getAttribute("animation")
+        switch (name) {
+            case "src":
+                this.setState({
+                    src: newValue
+                })
+                break;
+        }
+    }
+
+    attrSetDic() {
+        return [
+            {
+                type: "string",
+                name: "连接",
+                key: "src",
+                valueRule: "他的曲直规则",//应该是个函数
+            },
+        ]
+
+    }
+
+    static get observedAttributes() { // (3)
+        console.log("hhhh")
+        return ["animation", "src"];
+    }
+
     render() {
         ReactDOM.render(<Img src={this.state.src}/>, this.container);
     }
 
     willMount() {
         createStyle(style, this.shadow)
-        let src=this.getAttribute("src");
-        if(src){
+        let src = this.getAttribute("src");
+        if (src) {
             this.setState({
                 src: src,
             })
