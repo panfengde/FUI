@@ -2,16 +2,17 @@ import React from "react"
 import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
 import Container from "component/Container"
+import style from './index.wless'
 
-interface bread{
-    title:string
+interface bread {
+    title: string
 }
 
 interface propsType {
-    data:Array<bread>,
+    data: Array<bread>,
 }
 
-function BreadCrumb(props:propsType) {
+function BreadCrumb(props: propsType) {
     return <div className="breadCrumb">
         {props.data.map((obj, index, arr) => {
             if (index !== arr.length - 1) {
@@ -46,10 +47,7 @@ class breadCrumb_f extends Container {
     }
 
     willMount() {
-
-        import('./index.wless').then((obj) => {
-            createStyle(obj.default, this.shadow)
-        });
+        createStyle(style, this.shadow);
         this.render();
     }
 }

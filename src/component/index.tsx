@@ -11,8 +11,8 @@ import Close from "component/Close";
 import Tips from "component/Tips";
 import popover from "component/Popover";
 import txt from "component/Txt";
-import group from "component/Group";
 import img from "component/Img";
+import Div from "component/Div";
 import {Tabs, Tab} from "component/Tabs";
 
 const dic = [
@@ -89,10 +89,6 @@ const dic = [
         component: txt
     },
     {
-        name: "group-f",
-        component: group
-    },
-    {
         name: "img-f",
         component: img
     },
@@ -103,6 +99,10 @@ const dic = [
     {
         name: "tab-f",
         component: Tab
+    },
+    {
+        name: "div-f",
+        component: Div
     },
 ];
 

@@ -2,7 +2,6 @@
 .button {
   //border: 2px solid royalblue;
   box-sizing: border-box;
-  cursor: pointer;
   touch-action: manipulation;
   user-select: none;
   border-radius: var(--borderRadius);

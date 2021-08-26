@@ -1,8 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from "react"
+import ReactDOM from 'react-dom';
 import {createStyle, createLink} from "src/tools";
 import Container from "component/Container"
-import style from './index.wless'
+
+interface styleType {
+    position: "static" | "absolute" | "relative" | "fixed",
+    left: number | string,
+    top: number | string
+}
 
 interface propsType {
     style_f: {
@@ -10,12 +15,11 @@ interface propsType {
     },
 }
 
-function Button(props: propsType) {
-    return <div className="button ripple" style={props.style_f}>
+function Div(props: propsType) {
+    return <div style={props.style_f}>
         <slot/>
     </div>
 }
-
 /**
  * 关于属性的字典
  */
@@ -65,29 +69,25 @@ const styleDic = [
     },
 ];
 
-class Button_f extends Container {
+class div_f extends Container {
     constructor() {
         super();
-        this.props = {}
-        this.createBlockContainer()
+        this.state = {
+        }
+        this.createBlockContainer();
         this.style_f = {};
         this.propsDic = propsDic;
         this.styleDic = styleDic;
     }
 
     render() {
-        ReactDOM.render(<Button style_f={this.style_f}/>, this.container);
+        ReactDOM.render(<Div style_f={this.style_f}/>, this.container);
     }
 
     willMount() {
-        createStyle(style, this.shadow)
-        /*this.container.addEventListener("click", () => {
-            console.log("----");
-        })*/
-        this.render();
+        this.render()
     }
-
 }
 
-export default Button_f;
 
+export default div_f

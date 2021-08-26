@@ -180,15 +180,16 @@ function _App() {
 function App() {
     const inputEl = useRef(null);
     let [src, setSrc] = useState("https://preview.qiantucdn.com/58pic/00/94/54/69E58PICU4kbtF67SRY15_PIC2018.jpg!w1024_new_small")
+    let [style_F, setStyle_f] = useState({border: "1px solid red"})
     // const groupRef = useRef(null);
     useEffect(() => {
         setTimeout(() => {
-            console.log(inputEl.current.attrSetDic())
-            console.log(inputEl.current.observedAttributes)
-            setSrc("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fgss0.baidu.com%2F-Po3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2F4034970a304e251fae75ad03a786c9177e3e534e.jpg&refer=http%3A%2F%2Fgss0.baidu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1632319753&t=8bac1b3cbb4fa18d1e912ebc9571b6eb")
+            setStyle_f({border: "10px solid red"})
+            console.log(inputEl.current.styleDic)
+            //console.log(inputEl.current.observedAttributes)
+            // setSrc("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fgss0.baidu.com%2F-Po3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2F4034970a304e251fae75ad03a786c9177e3e534e.jpg&refer=http%3A%2F%2Fgss0.baidu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1632319753&t=8bac1b3cbb4fa18d1e912ebc9571b6eb")
             //inputEl.current.animation = "animate__animated animate__jello2"
-        }, 1400)
-
+        }, 1000)
     }, []);
 
     return <div className="box">
@@ -229,6 +230,7 @@ function App() {
             </row-f>
         </div>
         <img-f
+            style_f={style_F}
             ref={inputEl}
             src={src}
             animation="animate__animated animate__jello"

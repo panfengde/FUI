@@ -16,6 +16,11 @@ interface setStyleType {
     [key: string]: any
 }
 
+//style
+interface styleType {
+    [key: string]: any
+}
+
 //setState设置数据
 interface setStateType {
     [key: string]: any
@@ -38,24 +43,36 @@ interface attrNode {
     valueRule: string//"他的曲直规则",//应该是个函数
 }
 
+// 样式的接口类型
+interface styleNode {
+    type: string,//可以更具体
+    name: string,//可以更具体
+    key: string//可以更具体
+    valueRule: string//"他的曲直规则",//应该是个函数
+}
 
 class BlockContainerInline extends HTMLElement {
     shadow: ShadowRoot;
     container: HTMLElement;
     state: stateType;
+    style_f: styleType;
     props: slotPropsType;
     pendingRender: boolean;
     observerObj: MutationObserver;
     update?: () => void
+    styleDic: Array<styleNode>; //元素可以设置的样式字典
+    propsDic: Array<attrNode>; //元素可以设置的样式字典
 
-
+    //todo
     constructor() {
         super();
         this.state = {};
         this.props = {};
+        this.style_f = {};
+        this.styleDic = [];
+        this.propsDic = [];
         this.pendingRender = false;
     }
-
 
     /*
     * 自定义的元素的生命周期
@@ -93,31 +110,30 @@ class BlockContainerInline extends HTMLElement {
     }
 
     createBlockContainer() {
-        this.shadow = this.attachShadow({mode: 'open'});
+        this.shadow = this.attachShadow({mode: 'closed'});
         this.container = document.createElement('div');
-        this.container.draggable = true;
+        //this.container.draggable = true;
         //this.container.className = "container"
+        //this.container.style.cursor = "move";
         this.shadow.append(this.container);
         return this.container;
     }
 
     createInlineBlockContainer() {
-        this.shadow = this.attachShadow({mode: 'open'});
-        this.container = document.createElement('div');
-        this.container.draggable = true;
-        this.container.style.display = "inline-block";
+        this.shadow = this.attachShadow({mode: 'closed'});
+        this.container = document.createElement('span');
+        //this.container.draggable = true;
+        //this.container.style.cursor = "move";
         this.shadow.append(this.container);
         return this.container;
     }
-
     /**
      * 修改样式
      * @param style
      */
     setStyle(style: setStyleType) {
-        this.state.style = {...this.state.style, ...style};
+        this.style_f = {...this.style_f, ...style};
         this.doRender()
-
     }
 
     /**
@@ -173,14 +189,23 @@ class BlockContainerInline extends HTMLElement {
     }
 
     static get observedAttributes() { // (3)
-        console.log("hhhh")
-        return ["animation"];
+        return ["animation", "style_f"];
     }
 
-    attributeChangedCallback(name: string, oldValue: string, newValue: string) {
-        console.log("attributeChangedCallback-----", name, oldValue, newValue)
-        this.container.className = this.getAttribute("animation")
-        this.arrChangeCallback(name, oldValue, newValue)
+    attributeChangedCallback(name: string, oldValue: any, newValue: any) {
+        switch (name) {
+            case "animation":
+                //this.container.className = this.getAttribute("animation")
+                this.container.className = newValue
+                break;
+            case "style_f":
+                debugger;
+                this.setStyle(newValue)
+                break;
+            default:
+                this.arrChangeCallback(name, oldValue, newValue)
+        }
+
         this.render();
     }
 
@@ -189,18 +214,6 @@ class BlockContainerInline extends HTMLElement {
 
     arrDic(): Array<string> {
         return [];
-    }
-
-    //todo
-    attrSetDic(): Array<attrNode> {
-        return [
-            /* {
-                 type: "color",
-                 name: "字体",
-                 key: "fontSize",
-                 valueRule: "他的曲直规则",//应该是个函数
-             },*/
-        ]
     }
 
 
